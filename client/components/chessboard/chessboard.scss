@@ -1,0 +1,25 @@
+.board-tile{ //because the tile width is 12/8
+	position: relative;
+    height: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 12.5%;
+    float: left;
+    padding-bottom: 12.5%;
+    &.black{
+    	background: grey;
+    	color: white;
+    }
+    .board-tile-index-numeric{
+        position: absolute;
+        left: 5px;
+        top: 3px;
+        font-size: 0.9em;
+    }
+    .board-tile-index-alphabet{
+        position: absolute;
+        right: 5px;
+        bottom: 3px;
+        font-size: 0.9em;
+    }
+}

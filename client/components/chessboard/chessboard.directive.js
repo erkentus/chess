@@ -5,7 +5,8 @@ angular.module('chessApp').directive('chessBoard', function () {
 		restrict: 'E',
 		templateUrl: 'components/chessboard/chessboard.html',
 		link: function($scope){
-
+			$scope.boardTiles = Array.apply(null, Array(64)).map(function (x, i) { return i; }) ;
+			
 		}
 	}
 });
