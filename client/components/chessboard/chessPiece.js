@@ -9,7 +9,6 @@ angular.module('chessApp').directive('chessPiece', function () {
 		restrict: 'E',
 		templateUrl: 'components/chessboard/chessPiece.html',
 		link: function($scope){
-
 		}
 	}
 });

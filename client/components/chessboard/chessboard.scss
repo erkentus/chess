@@ -1,5 +1,13 @@
+.board-container{
+    position: relative;
+    .chess-pieces{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
 .board-tile{ //because the tile width is 12/8
-	position: relative;
+    position: relative;
     height: 0px;
     padding-left: 15px;
     padding-right: 15px;
@@ -7,8 +15,8 @@
     float: left;
     padding-bottom: 12.5%;
     &.black{
-    	background: grey;
-    	color: white;
+        background: grey;
+        color: white;
     }
     .board-tile-index-numeric{
         position: absolute;
@@ -21,5 +29,18 @@
         right: 5px;
         bottom: 3px;
         font-size: 0.9em;
+    }
+}
+.board-piece{ //because the tile width is 12/8
+    position: relative;
+    height: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 12.5%;
+    float: left;
+    padding-bottom: 12.5%;
+    color: green;
+    &.black{
+        color: black;
     }
 }

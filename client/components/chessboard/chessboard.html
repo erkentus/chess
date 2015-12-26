@@ -1,10 +1,10 @@
 <div class='board-container'>
-    <div class='board row'>
-        <board-tile ng-repeat='boardTile in board.tiles' index='$index' tile='boardTile'>
+    <div class='row'>
+        <board-tile ng-repeat='boardTile in board.tiles track by $index' index='$index' tile='boardTile'>
         </board-tile>
     </div>
-    <div class='chess-piece'>
-    	<chess-piece ng-repeat='piece in board.pieces' piece='piece'>
+    <div class='chess-pieces row'>
+    	<chess-piece ng-repeat='piece in board.pieces track by $index' piece='piece'>
     	</chess-piece>
     </div>
 </div>
