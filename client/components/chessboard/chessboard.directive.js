@@ -10,7 +10,7 @@ angular.module('chessApp').directive('chessBoard', function(_, chessboardUtility
                 pieces: [], //the pieces
                 position: [] //general information about the position
             };
-            $scope.board.tiles = chessboardUtility.createTiles('black');
+            $scope.board.tiles = chessboardUtility.createTiles('white');
             //order accordingly
             //get pieces from server
             GameService.getInitialPosition().then(function(data) {

@@ -53,4 +53,8 @@ app.service('chessboardUtility', function(_) {
         }
         return orderedTiles;
     };
+
+    this.splitInRows = function(){
+
+    };
 });
