@@ -15,9 +15,7 @@ angular.module('chessApp').directive('chessBoard', function(_, chessboardUtility
             //get pieces from server
             GameService.getInitialPosition().then(function(data) {
                 $scope.board.position = data;
-                $scope.board.pieces = data.board; //this is an array including empty squares
-                // $scope.board.pieces = chessboardUtility.order('white', $scope.board.pieces);
-                //need to put pieces as according to the chosen side too
+                $scope.board.pieces = chessboardUtility.splitPiecesInRows('white', data.board); //this is an array including empty squares
             });
         }
     }

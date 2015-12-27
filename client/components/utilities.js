@@ -34,11 +34,11 @@ app.service('chessboardUtility', function(_) {
                 }
             }
         }
-        return this.order(color, tiles);
+        return this._order(color, tiles);
     };
 
     //this one orders the pieces and tiles in correct order according the viewpoint of the user
-    this.order = function(color, tiles) {
+    this._order = function(color, tiles) {
         //ES6 more info check out here https://hacks.mozilla.org/2015/05/es6-in-depth-rest-parameters-and-defaults/
         let orderedTiles = Array(...Array(8)).map(() => Array(8));
         for(let i of Array(8).keys()){
@@ -53,8 +53,21 @@ app.service('chessboardUtility', function(_) {
         }
         return orderedTiles;
     };
-
-    this.splitInRows = function(){
-
+    /**
+     * The position of the board is passed from the server side
+     * and it needs to be converted to a 2-dims array
+     * @return {[type]} [description]
+     */
+    this.splitPiecesInRows = function(color, pieces){
+        let splitted = Array(...Array(8)).map((el, index) => {
+            return pieces.slice((index)*8, (index * 8 + 8));
+        });
+        return this._order(color, splitted);
     };
+    /**
+     * opposite of splitPiecesInRows
+     */
+    this.combinePiecesInArray = function(pieces){
+
+    }
 });
