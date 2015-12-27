@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chessApp').directive('chessPiece', function () {
+angular.module('chessApp').directive('chessPiece', function (chessboardUtility) {
 	return {
 		scope: {
 			piece: '='
@@ -9,6 +9,7 @@ angular.module('chessApp').directive('chessPiece', function () {
 		restrict: 'E',
 		templateUrl: 'components/chessboard/chessPiece.html',
 		link: function($scope){
+			// $scope.pieceImage = chessboardUtility.getPieceImage($scope.piece);
 		}
 	}
 });

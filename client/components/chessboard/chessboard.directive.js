@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chessApp').directive('chessBoard', function(_, utilityTiles, GameService) {
+angular.module('chessApp').directive('chessBoard', function(_, chessboardUtility, GameService) {
     return {
         restrict: 'E',
         templateUrl: 'components/chessboard/chessboard.html',
@@ -10,13 +10,13 @@ angular.module('chessApp').directive('chessBoard', function(_, utilityTiles, Gam
                 pieces: [], //the pieces
                 position: [] //general information about the position
             };
-            $scope.board.tiles = utilityTiles.create('white');
+            $scope.board.tiles = chessboardUtility.createTiles('black');
             //order accordingly
             //get pieces from server
             GameService.getInitialPosition().then(function(data) {
                 $scope.board.position = data;
-                $scope.board.pieces = data.board
-                $scope.board.pieces = utilityTiles._order('white', $scope.board.pieces);
+                $scope.board.pieces = data.board; //this is an array including empty squares
+                // $scope.board.pieces = chessboardUtility.order('white', $scope.board.pieces);
                 //need to put pieces as according to the chosen side too
             });
         }

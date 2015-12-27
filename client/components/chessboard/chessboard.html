@@ -1,7 +1,9 @@
 <div class='board-container'>
-    <div class='row'>
-        <board-tile ng-repeat='boardTile in board.tiles track by $index' index='$index' tile='boardTile'>
-        </board-tile>
+    <div class='chess-tiles'>
+        <div class='row' ng-repeat='tileRow in board.tiles'>
+            <board-tile last-file='$parent.$last' first-rank='$first' ng-repeat='boardTile in tileRow' tile='boardTile'>
+            </board-tile>
+        </div>
     </div>
     <div class='chess-pieces row'>
     	<chess-piece ng-repeat='piece in board.pieces track by $index' piece='piece'>

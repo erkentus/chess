@@ -1,16 +1,18 @@
 'use strict';
 
-angular.module('chessApp').directive('boardTile', function (utilityTiles) {
+angular.module('chessApp').directive('boardTile', function (chessboardUtility) {
 	return {
 		scope: {
 			index: '=',
-			tile: '='
+			tile: '=',
+			lastFile: '=',
+			firstRank: '='
 		},
 		replace: true,
 		restrict: 'E',
 		templateUrl: 'components/chessboard/boardTile.html',
 		link: function($scope){
-			$scope.isBlack = utilityTiles.isBlack($scope.tile.file, $scope.tile.rank);
+			$scope.isBlack = chessboardUtility.isTileBlack($scope.tile.file, $scope.tile.rank);
 		}
 	}
 });

@@ -1,4 +1,4 @@
 <div class='board-tile' ng-class='{"black": isBlack}'>
-    <span ng-show='index%8===0' class='board-tile-index-numeric'>{{tile.file}}</span>
-    <span ng-show='index>55' class='board-tile-index-alphabet'>{{tile.rank}}</span>
+    <span ng-show='firstRank' class='board-tile-index-numeric'>{{tile.file}}</span>
+    <span ng-show='lastFile' class='board-tile-index-alphabet'>{{tile.rank}}</span>
 </div>
