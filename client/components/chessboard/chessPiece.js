@@ -9,7 +9,7 @@ angular.module('chessApp').directive('chessPiece', function (chessboardUtility) 
 		restrict: 'E',
 		templateUrl: 'components/chessboard/chessPiece.html',
 		link: function($scope){
-			// $scope.pieceImage = chessboardUtility.getPieceImage($scope.piece);
+			$scope.pieceImage = chessboardUtility.getPieceImage($scope.piece);
 		}
 	}
 });

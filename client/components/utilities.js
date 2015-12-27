@@ -70,4 +70,53 @@ app.service('chessboardUtility', function(_) {
     this.combinePiecesInArray = function(pieces){
 
     }
+    /**
+     * return path to the svg of the images
+     * @param  {[type]} piece [description]
+     * @return {[type]}       [description]
+     */
+    this.getPieceImage = (piece) => {
+        if (!piece) return null;
+        if (piece.side === 'W'){
+            if (piece.type === 'P'){
+                return 'assets/svg/white_pawn.svg';
+            }
+            if (piece.type === 'R'){
+                return 'assets/svg/white_rook.svg';
+            }
+            if (piece.type === 'N'){
+                return 'assets/svg/white_knight.svg';
+            }
+            if (piece.type === 'B'){
+                return 'assets/svg/white_bishop.svg';
+            }
+            if (piece.type === 'K'){
+                return 'assets/svg/white_king.svg';
+            }
+            if (piece.type === 'Q'){
+                return 'assets/svg/white_queen.svg';
+            }
+        }
+        else if (piece.side === 'B'){
+            if (piece.type === 'P'){
+                return 'assets/svg/black_pawn.svg';
+            }
+            if (piece.type === 'R'){
+                return 'assets/svg/black_rook.svg';
+            }
+            if (piece.type === 'N'){
+                return 'assets/svg/black_knight.svg';
+            }
+            if (piece.type === 'B'){
+                return 'assets/svg/black_bishop.svg';
+            }
+            if (piece.type === 'K'){
+                return 'assets/svg/black_king.svg';
+            }
+            if (piece.type === 'Q'){
+                return 'assets/svg/black_queen.svg';
+            }
+        }
+        return undefined;
+    }
 });

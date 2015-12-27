@@ -48,4 +48,11 @@
     &.black {
         color: black;
     }
+    .board-piece-image{
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+        display: block;
+        margin-top: 3px;
+    }
 }
