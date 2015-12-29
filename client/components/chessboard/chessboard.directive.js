@@ -3,8 +3,9 @@
 angular.module('chessApp').directive('chessBoard', function(_, chessboardUtility, GameService) {
     return {
         restrict: 'E',
+        replace: true,
         templateUrl: 'components/chessboard/chessboard.html',
-        link: function($scope) {
+        link: function($scope, el) {
             $scope.board = {
                 tiles: [], //the tiles
                 pieces: [], //the pieces
@@ -17,6 +18,15 @@ angular.module('chessApp').directive('chessBoard', function(_, chessboardUtility
                 $scope.board.position = data;
                 $scope.board.pieces = chessboardUtility.splitPiecesInRows('white', data.board); //this is an array including empty squares
             });
+            $scope.onBoardMouseDown = function(){
+				el.addClass('board-active');
+            }            
+            $scope.onBoardMouseUp = function(){
+				el.removeClass('board-active');
+            }
+            $scope.onBoardMouseLeave = function(){
+				el.removeClass('board-active');
+            }
         }
     }
 });

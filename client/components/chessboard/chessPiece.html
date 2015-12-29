@@ -1,3 +1,3 @@
 <div class='board-piece unselectable' ng-class='{"black": piece.side==="B"}'>
-    <img class='board-piece-image' ng-src='{{pieceImage}}'>
+    <img data-drag='true' data-jqyoui-options="{revert: true, revertDuration: 200}" jqyoui-draggable class='board-piece-image' ng-src='{{pieceImage}}'>
 </div>

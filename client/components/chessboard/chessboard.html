@@ -1,4 +1,5 @@
-<div class='board-container'>
+<div class='board-container' ng-mousedown='onBoardMouseDown()' 
+ng-mouseup='onBoardMouseUp()' ng-mouseleave='onBoardMouseLeave()'>
     <div class='chess-tiles'>
         <div class='row' ng-repeat='tileRow in board.tiles'>
             <board-tile last-file='$parent.$last' first-rank='$first' ng-repeat='boardTile in tileRow' tile='boardTile'>

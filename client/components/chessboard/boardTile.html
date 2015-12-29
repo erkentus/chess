@@ -1,4 +1,4 @@
-<div class='board-tile unselectable' ng-class='{"black": isBlack}'>
+<div data-drop='true' jqyoui-droppable='{onOver:"onMouseOver", onOut:"onMouseLeave", beforeDrop:"beforeDrop"}' class='board-tile unselectable' ng-class='{"black": isBlack}'>
     <span ng-show='firstRank' class='board-tile-index-numeric'>{{tile.file}}</span>
     <span ng-show='lastFile' class='board-tile-index-alphabet'>{{tile.rank}}</span>
 </div>

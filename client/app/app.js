@@ -8,7 +8,8 @@ angular.module('chessApp', [
   'ui.router',
   'ui.bootstrap',
   'validation.match',
-  'chessUtilities'
+  'chessUtilities',
+  'ngDragDrop'
 ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
