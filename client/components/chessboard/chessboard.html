@@ -7,7 +7,7 @@ ng-mouseup='onBoardMouseUp()' ng-mouseleave='onBoardMouseLeave()'>
         </div>
     </div>
     <div class='chess-pieces'>
-        <div class='row' ng-repeat='pieceRow in board.pieces'>
+        <div class='row' ng-repeat='pieceRow in ChessBoardCtrl.pieces'>
             <chess-piece ng-repeat='piece in pieceRow track by $index' piece='piece'>
             </chess-piece>
         </div>

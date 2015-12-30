@@ -18,5 +18,22 @@ module.exports = {
                 reject(err.toString());
             }
         });
+    },
+
+    updatePosition: function(position, move){
+        return new Promise(function(resolve, reject){
+            try{
+                var moveVector = chessRules.moveToPgn(position, move);
+                var updatedPosition = chessRules.applyMove(position, move);
+                var availableMoves = chessRules.getAvailableMoves(updatedPosition);
+                resolve({
+                    position: updatedPosition,
+                    availableMoves: availableMoves
+                });
+            }
+            catch(err){
+                reject(err.toString());
+            }
+        });
     }
 }

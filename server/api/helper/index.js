@@ -9,6 +9,7 @@ var router = express.Router();
 //when information needs to be retrieved from the server
 
 router.get('/position', controller.getInitialChessPosition);
+router.put('/position', controller.updateChessPosition);
 
 
 module.exports = router;

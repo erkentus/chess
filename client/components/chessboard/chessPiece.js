@@ -11,7 +11,6 @@ angular.module('chessApp').directive('chessPiece', function(chessboardUtility, $
         templateUrl: 'components/chessboard/chessPiece.html',
         link: function($scope, el) {
             $scope.pieceImage = chessboardUtility.getPieceImage($scope.piece);
-            $scope.src = 'hellodude';
         }   
     }
 });

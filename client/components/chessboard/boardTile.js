@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chessApp').directive('boardTile', function(chessboardUtility, $q, $timeout, $) {
+angular.module('chessApp').directive('boardTile', function(chessboardUtility, $) {
     return {
         scope: {
             index: '=',
@@ -15,7 +15,7 @@ angular.module('chessApp').directive('boardTile', function(chessboardUtility, $q
         link: function($scope, el, attrs, ctrls) {
             $scope.isBlack = chessboardUtility.isTileBlack($scope.tile.file, $scope.tile.rank);
             $scope.dest = chessboardUtility.getTileDest($scope.tile);
-            $scope.onMouseOver = function() {
+            $scope.onMouseOver = function() { //just for highlighting which tile is being dropped on
                 el.addClass('onMouseOver');
             }
             $scope.onMouseLeave = function() {
@@ -23,19 +23,10 @@ angular.module('chessApp').directive('boardTile', function(chessboardUtility, $q
             }
             $scope.beforeDrop = function(event, ui) {
                 el.removeClass('onMouseOver');
-                var deferred = $q.defer();
                 var draggedPiece = $(ui.draggable).data().draggedPiece;
                 var pieceDestination = $scope.dest;
                 var pieceSrc = chessboardUtility.getPieceSrc(draggedPiece.curFile, draggedPiece.curRank);
-                if (chessboardUtility.isLegalMove(ctrls.legalMoves, { src: pieceSrc, dst: pieceDestination})){
-                    //verify it by server before rendering on the page 
-                    //this way we can support the viewer mode
-                    deferred.resolve();
-                } 
-                else{ //if move is illegal by itself then just reject right away
-                    deferred.reject();
-                }
-                return deferred.promise;
+                return ctrls.onMove({ src: pieceSrc, dst: pieceDestination});
             }
             $scope.onDrop = function(event, ui){
 

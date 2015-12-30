@@ -20,6 +20,17 @@ exports.getInitialChessPosition = function(req, res){
     });
 }
 
+exports.updateChessPosition = function(req, res){
+    var position = req.body.position,
+    move = req.body.move;
+    console.log(position, move);
+    chess.updatePosition(position, move).then(function(position){
+      responseWithResult(res, 200)(position);
+    }).catch(function(err){
+      console.log(err);
+      handleError(res)(err);
+    });
+}
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
