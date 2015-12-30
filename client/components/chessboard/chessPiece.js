@@ -7,11 +7,12 @@ angular.module('chessApp').directive('chessPiece', function(chessboardUtility, $
         },
         replace: true,
         restrict: 'E',
+        require: '^chessBoard',
         templateUrl: 'components/chessboard/chessPiece.html',
         link: function($scope, el) {
             $scope.pieceImage = chessboardUtility.getPieceImage($scope.piece);
-
-        }
+            $scope.src = 'hellodude';
+        }   
     }
 });
 //# sourceMappingURL=game.js.map

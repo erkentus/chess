@@ -6,6 +6,9 @@ app.factory('_', function() {
     return window._;
 });
 
+app.factory('$', function(){
+    return window.jQuery;
+});
 
 app.service('chessboardUtility', function(_) {
     this.isTileBlack = function(file, rank) {
@@ -69,7 +72,26 @@ app.service('chessboardUtility', function(_) {
      */
     this.combinePiecesInArray = function(pieces){
 
-    }
+    };
+    /**
+     * return the dest number of the tile
+     * @param  {[type]} tile [description]
+     * @return {[type]}      [description]
+     */
+    this.getTileDest = function(tile){
+        try{
+            return 'abcdefgh'.indexOf(tile.rank) + 8*(tile.file-1);
+        }
+        catch(err){
+            return undefined;
+        }
+    };
+    /**
+     * 
+     */
+    this.getPieceSrc = function(file, rank){
+        return (file-1)*8+'abcdefgh'.indexOf(rank);
+    };
     /**
      * return path to the svg of the images
      * @param  {[type]} piece [description]
@@ -118,5 +140,24 @@ app.service('chessboardUtility', function(_) {
             }
         }
         return undefined;
+    }
+    this.assignFileRank = function(pieces){
+        return pieces.map((piece, index) => {
+            if (!piece) piece = {};
+            piece.index = index;
+            piece.curFile = Math.floor(index / 8) + 1; 
+            piece.curRank = 'abcdefgh'[index % 8];
+            return piece;
+        })
+    }
+    this.isLegalMove = function(legalMoves, move){
+        try {
+            return legalMoves.find((_move) => {
+                return _move.src === move.src && _move.dst === move.dst
+            });
+        }
+        catch(err){
+            return false;
+        }
     }
 });

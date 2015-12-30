@@ -5,7 +5,19 @@ angular.module('chessApp').directive('chessBoard', function(_, chessboardUtility
         restrict: 'E',
         replace: true,
         templateUrl: 'components/chessboard/chessboard.html',
-        link: function($scope, el) {
+        link: function($scope, el){
+            $scope.onBoardMouseDown = function(){
+                el.addClass('board-active');
+            }            
+            $scope.onBoardMouseUp = function(){
+                el.removeClass('board-active');
+            }
+            $scope.onBoardMouseLeave = function(){
+                el.removeClass('board-active');
+            }
+        },
+        controller: function($scope) {
+            var self = this;
             $scope.board = {
                 tiles: [], //the tiles
                 pieces: [], //the pieces
@@ -15,18 +27,11 @@ angular.module('chessApp').directive('chessBoard', function(_, chessboardUtility
             //order accordingly
             //get pieces from server
             GameService.getInitialPosition().then(function(data) {
-                $scope.board.position = data;
-                $scope.board.pieces = chessboardUtility.splitPiecesInRows('white', data.board); //this is an array including empty squares
+                // self.position = data.position;
+                var enumeratePieces = chessboardUtility.assignFileRank(data.position.board);
+                $scope.board.pieces = chessboardUtility.splitPiecesInRows('white', data.position.board); //this is an array including empty squares
+                self.legalMoves = data.availableMoves;
             });
-            $scope.onBoardMouseDown = function(){
-				el.addClass('board-active');
-            }            
-            $scope.onBoardMouseUp = function(){
-				el.removeClass('board-active');
-            }
-            $scope.onBoardMouseLeave = function(){
-				el.removeClass('board-active');
-            }
         }
     }
 });

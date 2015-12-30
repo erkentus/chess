@@ -9,7 +9,11 @@ module.exports = {
         return new Promise(function(resolve, reject) {
             try {
             	var initPosition = chessRules.getInitialPosition();
-            	resolve(initPosition);
+                var availableMoves = chessRules.getAvailableMoves(initPosition);
+            	resolve({
+                    position: initPosition,
+                    availableMoves: availableMoves
+                });
             } catch (err) {
                 reject(err.toString());
             }
